@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app3
+  template:
+    metadata:
+      labels:
+        app: app3
+    spec:
+      containers:
+        - name: app3
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: index-volume
+              mountPath: /usr/share/nginx/html/index.html
+              subPath: index.html  # Ensures the file is mounted as index.html
+      volumes:
+        - name: index-volume
+          configMap:
+            name: app3-index  # The ConfigMap to mount
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app3-service
+spec:
+  selector:
+    app: app3
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

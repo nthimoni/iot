@@ -1,0 +1,1 @@
+{"virtualbox":{"/shared_folder":{"guestpath":"/shared_folder","hostpath":"/home/nthimoni/Documents/iot/pt2/shared","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/nthimoni/Documents/iot/pt2","disabled":false,"__vagrantfile":true}}}
